@@ -13,12 +13,16 @@ jobs:
           with:
             python-version: '3.7'
         - name: fetch project
+          if: success()
           uses: actions/checkout@v2
         - name: Python Style Checker
+          if: success()
           uses: andymckay/pycodestyle-action@0.1.3
         - name: Install requirements
+          if: always()
           run: pip install -r requirements.txt
         - name: Test backend module
+          if: always()
           run: |
             cd panda_posrod_ksiazek
             python3 manage.py test blog/tests/views
