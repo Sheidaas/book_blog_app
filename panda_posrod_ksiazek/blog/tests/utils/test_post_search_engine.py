@@ -18,7 +18,8 @@ class TestPostSearchEngine(test.TestCase):
     def test_get_commited_query(self):
         commited = True
         valid_query = [Q(**{'commited': commited})]
-        self.assertEqual(valid_query, PostSearchEngine().get_commited_query(commited))
+        self.assertEqual(valid_query,
+                         PostSearchEngine().get_commited_query(commited))
 
     def test_get_title_keywords_query(self):
         title_keywords = ['Hobbit', 'czyli']
