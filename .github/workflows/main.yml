@@ -10,9 +10,5 @@ jobs:
     steps:
       - name: Specify Python Version
         run: python -V
-      - name: Python Django Coverage GitHub Action
-        uses: dc740/django-coveragepy-github-action@0.9
-        with:
-          # Application
-          django-app: 'panda_posrod_ksiazek'
-          minimum-coverage: 20
+      - name: Run ls command
+        run: ls 
