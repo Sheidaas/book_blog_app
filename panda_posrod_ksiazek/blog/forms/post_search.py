@@ -22,7 +22,6 @@ class PostSearch(forms.Form):
             _filter['authors_keywords'] = self._clean_data_for_filter(self.cleaned_data['authors_keywords'])
         
         if self.cleaned_data['tags']:
-            print(self.cleaned_data['tags'][0])
             _filter['tags'] = self.cleaned_data['tags']
 
         if self.cleaned_data['from_date']:

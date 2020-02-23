@@ -39,19 +39,20 @@ class TestPostSearchEngine(test.TestCase):
         valid_argument_list = [Q(**{'published_date__lte': from_date})]
         self.assertEqual(valid_argument_list, PostSearchEngine.get_to_date_query(from_date))
 
+    def test_get_filter_options(self):
+        valid_flag = {'latest': True, 'oldest': False}
+        valid_argument_list = [
+            Q(**{'title__icontains': 'qwerty'}),
+            Q(**{'commited': True})
+        ]
+
+        _filter = {'latest': True, 'title_keywords': ['qwerty'], 'commited': True}
+        self.assertEqual((valid_flag, valid_argument_list), PostSearchEngine().get_filter_options(_filter))
+
     def test_get_filtered_models_query(self):
         _filter = {
             'title_keywords': 'title',
             'from_date': '1999-01-01'
         }
         valid_post = Post.objects.get(pk=1)
-        self.assertEqual(valid_post, PostSearchEngine().get_filtered_models_query(_filter)[0])
-
-        _filter = {}
-        valid_posts = Post.objects.all()
-        self.assertEqual(valid_posts[0], PostSearchEngine().get_filtered_models_query(_filter)[0])
-
-        _filter = {
-            'title_keywords': 'tik',
-        }
-        self.assertFalse(PostSearchEngine().get_filtered_models_query(_filter))
+        self.assertEqual(valid_post, PostSearchEngine().get_filtered_posts(_filter)[0])
