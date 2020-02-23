@@ -1,0 +1,6 @@
+*.xml
+venv
+templ
+*.iml
+*.pyc
+db.sqlite3
