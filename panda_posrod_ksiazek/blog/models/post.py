@@ -11,7 +11,7 @@ class Post(models.Model):
     author = models.ManyToManyField(User)
     title = models.CharField(max_length=40, blank=False)
     published_date = models.DateTimeField(blank=False)
-    content = models.TextField(blank=False)
+    content = models.TextField()
     slug = models.SlugField(unique=True)
     tags = TaggableManager()
     commited = models.BooleanField(default=False)

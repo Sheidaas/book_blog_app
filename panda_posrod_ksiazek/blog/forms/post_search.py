@@ -1,5 +1,5 @@
 from django import forms
-from taggit.forms import TagField, TagWidget
+from taggit.forms import TagField
 
 from .validators.date_validator import validate_date
 

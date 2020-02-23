@@ -36,9 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'django_sass',
     'taggit',
-    'tempus_dominus',
     'rest_framework',
     'corsheaders'
 ]
@@ -59,9 +57,6 @@ ROOT_URLCONF = 'panda_posrod_ksiazek.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            'static'
-        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,10 +119,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
 STATIC_ROOT = 'static'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATICFILES_DIRS = [
-    BASE_DIR + '/temp/'
-]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
