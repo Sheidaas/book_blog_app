@@ -17,8 +17,8 @@ jobs:
       #- name: Python Style Checker
       #  uses: andymckay/pycodestyle-action@0.1.3
       - name: Test backend module
-        run: 
+        run: |
           cd /github/workspace/panda_posrod_ksiazek/
-          python3 manage.py blog/tests/views
+          python3 manage.py blog/tests/views,
           python3 manage.py blog/tests/forms
         
