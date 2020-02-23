@@ -17,6 +17,6 @@ jobs:
           curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
           python get-pip.py
       - name: fetch project
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: Python Style Checker
         uses: andymckay/pycodestyle-action@0.1.3
