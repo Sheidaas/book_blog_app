@@ -1,9 +1,11 @@
-from rest_framework.views import APIView
+import json
 from rest_framework.response import Response
-from blog.utils.post_search_engine import PostSearchEngine
+from rest_framework.views import APIView
+
 from blog.forms.post_search import PostSearch
 from blog.serializers.post import PostSerializer
-import json
+from blog.utils.post_search_engine import PostSearchEngine
+
 
 class GetPosts(APIView):
 
@@ -17,4 +19,3 @@ class GetPosts(APIView):
             return Response(data=serialized_posts.data)
         print('not valid buddy')
         return Response()
-        

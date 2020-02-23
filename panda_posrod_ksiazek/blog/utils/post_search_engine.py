@@ -1,7 +1,8 @@
-from blog.models.post import Post
 from django.db.models import Q
 from functools import reduce
 from operator import and_
+
+from blog.models.post import Post
 
 
 class PostSearchEngine:
@@ -67,7 +68,7 @@ class PostSearchEngine:
             'oldest': 'published_date'
         }
         flags, argument_list = self.get_filter_options(_filter)
-        
+
         if not argument_list:
             return Post.objects.none()
 
@@ -75,7 +76,5 @@ class PostSearchEngine:
             if flags[key]:
                 return Post.objects.filter(reduce(and_, argument_list)).order_by(flags_actions[key])[:max_posts]
 
-        if argument_list:   
+        if argument_list:
             return Post.objects.filter(reduce(and_, argument_list))[:max_posts]
-
-        

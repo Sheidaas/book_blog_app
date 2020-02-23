@@ -24,7 +24,7 @@ def validate_date(string: str):
         elif len(element) == 4:
             if not int(element) > 1000 or not int(element) < 9999:
                 raise ValidationError('Invalid date %s' % string)
-    
+
     # Checking are what system date is written
     elements_lengths = [len(element) for element in splitted_string]
     if elements_lengths != [4, 2, 2] and elements_lengths != [2, 2, 4]:

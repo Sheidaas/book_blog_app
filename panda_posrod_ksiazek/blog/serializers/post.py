@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from blog.models.post import Post
 from blog.serializers.fields.string_list_field import StringListField
 

@@ -1,11 +1,12 @@
 from django import test
 from django.db.models import Q
-from blog.utils.post_search_engine import PostSearchEngine
+
 from blog.models.post import Post
+from blog.utils.post_search_engine import PostSearchEngine
 
 
 class TestPostSearchEngine(test.TestCase):
-    
+
     def setUp(self):
         post = Post()
         post.title = 'title'

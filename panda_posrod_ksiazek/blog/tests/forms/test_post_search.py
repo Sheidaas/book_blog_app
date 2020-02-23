@@ -1,4 +1,5 @@
 from django import test
+
 from blog.forms.post_search import PostSearch
 
 
@@ -40,7 +41,7 @@ class TestPostSearch(test.TestCase):
 
         # Checking is _filter empty
         self.assertTrue(_filter)
-        
+
         self.assertEqual(_filter['title_keywords'], ['Harry', 'Potter'])
         self.assertEqual(_filter['authors_keywords'], ['J. K. Rowling'])
         self.assertEqual(_filter['from_date'], '1990-01-01')

@@ -1,7 +1,8 @@
-from .views.index import Index
+from django.urls import path
+
 from .views.get_posts import GetPosts
 from .views.get_tags import GetTags
-from django.urls import path
+from .views.index import Index
 
 urlpatterns = [
     path('', Index.as_view(), name='index'),

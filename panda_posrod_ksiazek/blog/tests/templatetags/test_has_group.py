@@ -1,6 +1,7 @@
-from django.contrib.auth.models import User, Group
-from blog.templatetags.has_group import has_group
 from django import test
+from django.contrib.auth.models import User, Group
+
+from blog.templatetags.has_group import has_group
 
 
 class TestHasGroup(test.TestCase):
@@ -13,7 +14,6 @@ class TestHasGroup(test.TestCase):
             name='mod'
         )
 
-    
     def test_has_group(self):
         user = User.objects.get(pk=1)
         self.assertFalse(has_group(user, 'mod'))

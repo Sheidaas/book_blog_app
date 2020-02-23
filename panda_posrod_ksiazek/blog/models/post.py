@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 from django.template.defaultfilters import slugify
 from taggit.managers import TaggableManager
 
@@ -19,6 +19,6 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-    
+
     def get_tags_display(self):
         return self.tags.values_list('name', flat=True)

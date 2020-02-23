@@ -1,6 +1,6 @@
 from django import test
-from blog.models.post import Post
 
+from blog.models.post import Post
 
 
 class TestPostModel(test.TestCase):

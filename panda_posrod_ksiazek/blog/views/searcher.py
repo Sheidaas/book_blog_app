@@ -1,5 +1,6 @@
-from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from blog.serializers.post import PostSerializer
 from blog.utils.post_search_engine import PostSearchEngine
 

@@ -1,16 +1,17 @@
-from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from blog.models.post import Post
 from blog.serializers.post import PostSerializer
 from blog.utils.post_search_engine import PostSearchEngine
 
 
 class Index(APIView):
-    
+
     def get(self, request, *args, **kwargs):
         context = self.get_context(request)
         return Response(data=context)
-    
+
     def get_context(self, request):
         hottest_posts = PostSearchEngine().get_filtered_posts({'commited': True}, max_posts=4)
         serialized_hottest_posts = PostSerializer(hottest_posts, many=True)
