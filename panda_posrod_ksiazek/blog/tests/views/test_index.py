@@ -11,7 +11,8 @@ class TestIndex(test.TestCase):
     def test_get_context(self):
         request = self.factory.get('/')
         request.user = AnonymousUser()
-        
+
+        # Validing context
         valid_context = {
             'is_user_authenticated': False,
             'hottests_posts': [],
