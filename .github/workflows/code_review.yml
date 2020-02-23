@@ -1,12 +1,8 @@
-name: CI
-
-on: [push]
-
+on: push
+name: TestCode
 jobs:
-  build:
-  runs-on: ubuntu-latest:
   sonarCloudTrigger:
-    name: SonarCloud Trigger
+    name: Check code with SonarCloud
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
