@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Specify Python Version
-        run: python -- version
+        run: python -V
       - name: Python Django Coverage GitHub Action
         uses: dc740/django-coveragepy-github-action@0.9
         with:
