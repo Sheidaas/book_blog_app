@@ -23,4 +23,7 @@ jobs:
             cd panda_posrod_ksiazek
             python3 manage.py test blog/tests/views
             python3 manage.py test blog/tests/forms
+            python3 manage.py test blog/tests/utils
+            python3 manage.py test blog/tests/models
+            python3 manage.py test blog/tests/templatetags
         
