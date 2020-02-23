@@ -19,6 +19,7 @@ jobs:
       - name: Test backend module
         run: |
           pip install -r requirements.txt
+          cd panda_posrod_ksiazek
           python3 manage.py blog/tests/views
           python3 manage.py blog/tests/forms
         
