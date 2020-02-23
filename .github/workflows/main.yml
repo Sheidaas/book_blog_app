@@ -8,18 +8,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v1
-        with:
-          python-version: '3.7'
-      - name: fetch project
-        uses: actions/checkout@v2
-      #- name: Python Style Checker
-      #  uses: andymckay/pycodestyle-action@0.1.3
-      - name: Test backend module
-        run: |
-          pip install -r requirements.txt
-          cd panda_posrod_ksiazek
-          python3 manage.py blog/tests/views
-          python3 manage.py blog/tests/forms
+        - name: Set up Python 3.7
+          uses: actions/setup-python@v1
+          with:
+            python-version: '3.7'
+        - name: fetch project
+          uses: actions/checkout@v2
+        #- name: Python Style Checker
+        #  uses: andymckay/pycodestyle-action@0.1.3
+        - name: Install requirements
+          run: pip install -r requirements.txt
+        - name: Test backend module
+          run: |
+            cd panda_posrod_ksiazek
+            python3 manage.py test blog/tests/views
+            python3 manage.py test blog/tests/forms
         
