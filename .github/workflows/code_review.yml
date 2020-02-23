@@ -1,6 +1,10 @@
-on: push
-name: Main Workflow
+name: CI
+
+on: [push]
+
 jobs:
+  build:
+  runs-on: ubuntu-latest:
   sonarCloudTrigger:
     name: SonarCloud Trigger
     runs-on: ubuntu-latest
