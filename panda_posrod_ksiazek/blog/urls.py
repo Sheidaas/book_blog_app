@@ -1,4 +1,3 @@
-from rest_framework.routers import DefaultRouter
 from .views.index import Index
 from .views.get_posts import GetPosts
 from .views.get_tags import GetTags

@@ -59,9 +59,7 @@ class PostSearchEngine:
                     flags[key] = True
                 else:
                     argument_list += actions[key](_filter[key])
-        return (flags, argument_list) 
-            
-
+        return flags, argument_list
 
     def get_filtered_posts(self, _filter, max_posts=20):
         flags_actions = {
