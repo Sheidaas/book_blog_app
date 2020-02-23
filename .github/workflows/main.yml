@@ -1,0 +1,16 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Python Django Coverage GitHub Action
+      uses: dc740/django-coveragepy-github-action@0.9
+      with:
+        # Application
+        django-app: 'panda_posrod_ksiazek'
+        minimum-coverage: 20
