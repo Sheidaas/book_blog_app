@@ -14,3 +14,5 @@ jobs:
           python-version: '3.7' # Semantic version range syntax or exact version of a Python version
       - name: Specify Python Version
         run: python -V
+      - name: Python Style Checker
+        uses: andymckay/pycodestyle-action@0.1.3
