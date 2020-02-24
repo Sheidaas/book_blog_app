@@ -39,11 +39,16 @@ class GetPosts(APIView):
 
         # Django Taggit TagField need a string
         # dict_data['tags'] have list of string
-        tag_string = ''
-        for index in range(len(dict_data['tags'])):
-            if index == len(dict_data['tags'])-1:
-                tag_string += dict_data['tags'][index]
-            else:
-                tag_string += dict_data['tags'][index] + ','
-        dict_data['tags'] = tag_string
-        return dict_data
+        try:
+            if dict_data['tags']:
+                tag_string = ''
+                for index in range(len(dict_data['tags'])):
+                    if index == len(dict_data['tags'])-1:
+                        tag_string += dict_data['tags'][index]
+                    else:
+                        tag_string += dict_data['tags'][index] + ','
+                dict_data['tags'] = tag_string
+        except KeyError:
+            pass
+        finally:
+            return dict_data
