@@ -15,7 +15,7 @@ class TestDateValidator(test.TestCase):
         try:
             validate_date(valid_string)
         except ValidationError:
-            self.fail(msg='%s is not valid' % valid_string)
+            self.fail()
 
     def test_is_properly_checking_is_string_have_digits(self):
         valid_string = '21.01.2020'
@@ -28,7 +28,7 @@ class TestDateValidator(test.TestCase):
         try:
             validate_date(valid_string)
         except ValidationError:
-            self.fail(msg='%s is not valid' % valid_string)
+            self.fail()
 
     def test_are_elements_can_be_date_number(self):
         valid_string = '21.01.2020'
@@ -41,7 +41,7 @@ class TestDateValidator(test.TestCase):
         try:
             validate_date(valid_string)
         except ValidationError:
-            self.fail(msg='%s is not valid' % valid_string)
+            self.fail()
 
     def test_are_date_is_in_valid_date_system(self):
         valid_string = '21.01.2020'
@@ -54,4 +54,4 @@ class TestDateValidator(test.TestCase):
         try:
             validate_date(valid_string)
         except ValidationError:
-            self.fail(msg='%s is not valid' % valid_string)
+            self.fail()

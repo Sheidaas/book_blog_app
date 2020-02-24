@@ -115,7 +115,7 @@ USE_TZ = False
 TEMPUS_DOMINUS_LOCALIZE = False
 
 CORS_ORIGIN_WHITELIST = [
-    'http://127.0.0.1/:3000'
+    'http://127.0.0.1:3000'
 ]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
