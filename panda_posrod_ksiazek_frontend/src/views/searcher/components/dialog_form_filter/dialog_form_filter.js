@@ -11,11 +11,11 @@ const styles = {
         color: 'white !important',
     }
     
-}
+};
 
 class DialogFormFilter extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             filter: {
                 title_keywords: '',
@@ -35,7 +35,7 @@ class DialogFormFilter extends Component {
             from_date: this.state.filter.from_date,
             to_date: this.state.filter.to_date,
         }})
-    }
+    };
 
     onChangeSortMethod = ( event ) => {
         this.setState({ filter: {
@@ -45,11 +45,11 @@ class DialogFormFilter extends Component {
             from_date: this.state.filter.from_date,
             to_date: this.state.filter.to_date,
         }})
-    }
+    };
 
     onChangeTagsList = (name) => {
-        var tags = this.state.filter.tags
-        var index = tags.indexOf(name)
+        let tags = this.state.filter.tags;
+        let index = tags.indexOf(name);
         if (index > -1) {
             tags.splice(index, 1)
         }else{
@@ -61,9 +61,9 @@ class DialogFormFilter extends Component {
             tags: tags,
             from_date: this.state.filter.from_date,
             to_date: this.state.filter.to_date,
-        }})
+        }});
         console.log(this.state.filter)
-    }
+    };
 
     getFactorySettings = () => {
         return {
@@ -73,10 +73,10 @@ class DialogFormFilter extends Component {
             from_date: '',
             to_date: '',
         }
-    }
+    };
 
     render () {
-        const { classes } = this.props
+        const { classes } = this.props;
         return (
             <>
             <Dialog 
@@ -114,19 +114,19 @@ class DialogFormFilter extends Component {
 
                     <Grid item xs={12} className="input-block">
                         <Button onClick={ () => {
-                            this.props.onClose()
-                            this.props.updateFilter(this.state.filter)
+                            this.props.onClose();
+                            this.props.updateFilter(this.state.filter);
                             this.props.getPostSearchResult(this.state.filter)
                             }}> Nowe wyszukiwanie </Button>
                         <Button onClick={ () => {
-                            this.props.onClose()
+                            this.props.onClose();
                             this.setState({filter: this.props.recoverFilter()})
                         }}> Cofnij </Button>
                         <Button onClick={ () => {
-                            const factory_settings = this.getFactorySettings()
-                            this.props.onClose()
-                            this.setState({filter: factory_settings})
-                            this.props.updateFilter(factory_settings)
+                            const factory_settings = this.getFactorySettings();
+                            this.props.onClose();
+                            this.setState({filter: factory_settings});
+                            this.props.updateFilter(factory_settings);
                             this.props.getPostSearchResult(factory_settings)}
                         }> Wyczyść filter </Button>
                     </Grid>

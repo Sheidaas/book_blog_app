@@ -25,15 +25,18 @@ class PostSerializer(serializers.ModelSerializer):
         """
         return {
             'id': instance.id,
-            'title': instance.title,
-            'published_date': instance.published_date,
-            'content': instance.content,
+            'title': str(instance.title),
+            'published_date': str(instance.published_date),
+            'content': str(instance.content),
             'commited': instance.commited,
-            'slug': instance.slug,
-            'card_image': instance.card_image.url,
-            'tags': [tag for tag in instance.tags.all()]
+            'slug': str(instance.slug),
+            'hero_image': instance.card_image.url,
+            'tags': [str(tag.name) for tag in instance.tags.all()]
         }
 
     class Meta:
+        """
+            Meta class
+        """
         model = Post
         fields = ('id', 'title', 'published_date', 'content', 'commited', 'slug', 'card_image', 'tags')

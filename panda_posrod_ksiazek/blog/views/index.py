@@ -1,3 +1,6 @@
+"""
+    blog.views.index.Index().get(request)
+"""
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -6,12 +9,20 @@ from blog.utils.post_search_engine import PostSearchEngine
 
 
 class Index(APIView):
-
+    """
+        Index view avaible in '/' path
+    """
     def get(self, request, *args, **kwargs):
+        """
+            Calling when request method is get
+        """
         context = self.get_context(request)
         return Response(data=context)
 
     def get_context(self, request):
+        """
+            Context for Index view
+        """
         hottest_posts = PostSearchEngine().get_filtered_posts({'commited': True}, max_posts=4)
         serialized_hottest_posts = PostSerializer(hottest_posts, many=True)
 

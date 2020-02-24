@@ -12,10 +12,10 @@ import MenuForm from './components/menu_form'
 
 class Header extends Component{
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             menuIcon: false
-        }
+        };
 
         this.onMenuIconClicked = this.onMenuIconClicked.bind(this)
     }
@@ -32,30 +32,39 @@ class Header extends Component{
             <>
             <MenuDrawer is_open={this.state.menuIcon} onClick={this.onMenuIconClicked} is_user_authenticated={this.props.is_user_authenticated}/>
             <Grid items sm={12} id="header"> 
-                <img src={logoImage} alt="logo"></img>
+                <img src={logoImage} alt="logo" />
             </Grid>
                 <AppBar position="sticky" id="navbar" alignItems="flex-end">
                     <Toolbar>
+
                         <Grid container justify="space-between" direction="row">
                             <Grid xs={6} container direction="row" justify="center" alignItems="center">
 
-                                <IconButton edge="start" color="inherit" aria-label="menu"
-                                onClick={this.onMenuIconClicked} size="medium">
+                                <IconButton
+                                    edge="start"
+                                    color="inherit"
+                                    aria-label="menu"
+                                    onClick={this.onMenuIconClicked} size="medium">
                                     <MenuIcon />
                                 </IconButton>  
                                 <Typography variant="body"> Panda Pośród Ksiązek </Typography>
 
                             </Grid>
                         <Grid xs={6} container direction="row" justify="center">
-                            <IconButton color="inherit" aria-label="instagram"
-                            size="medium" >
+
+                            <IconButton
+                                color="inherit"
+                                aria-label="instagram"
+                                size="medium">
                                 <InstagramIcon className="iconButtons"/>
                             </IconButton>
-                            <MenuForm />   
+                            <MenuForm />
+
                         </Grid>
            
 
                         </Grid>
+
                     </Toolbar>
                 </AppBar> 
             </>

@@ -7,7 +7,7 @@ import './tag_selector.sass'
 
 class TagSelector extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             tag_chips: []
         }
@@ -16,13 +16,13 @@ class TagSelector extends Component {
     componentWillMount () {
         axios.get('http://127.0.0.1:8000/get_tags/').then(
             (response) => {
-                console.log(response.data)
+                console.log(response.data);
                 this.setState({tag_chips: response.data})
             })}
 
     render () {
         const tag_chips = this.state.tag_chips.map( (tag_chip) => {
-            var index = this.props.selected_chips.indexOf(tag_chip.name)
+            let index = this.props.selected_chips.indexOf(tag_chip.name);
             if (index > -1) {
                 return (
                 <>
@@ -41,7 +41,7 @@ class TagSelector extends Component {
             )
             }
 
-        })
+        });
         return (
             <>
             <Grid container justify="center">

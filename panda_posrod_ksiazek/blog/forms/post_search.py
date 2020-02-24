@@ -53,7 +53,6 @@ class PostSearch(forms.Form):
 
     @staticmethod
     def _clean_data_for_filter(value: str):
-        print(value)
         return [string.strip(' ') for string in value.split(',')]
 
     @staticmethod
