@@ -41,6 +41,11 @@ class TestPostSearchEngine(test.TestCase):
         valid_argument_list = [Q(**{'published_date__lte': from_date})]
         self.assertEqual(valid_argument_list, PostSearchEngine.get_to_date_query(from_date))
 
+    def test_get_tags_query(self):
+        tags = ['good', 'content']
+        valid_query = [Q(**{'tags__name__in': tags})]
+        self.assertEqual(valid_query, PostSearchEngine().get_tags_keywords_query(tags))
+
     def test_get_filter_options(self):
         valid_flag = {'latest': True, 'oldest': False}
         valid_argument_list = [

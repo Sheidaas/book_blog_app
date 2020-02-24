@@ -28,6 +28,7 @@ class IndexView extends Component{
             }})
           .then(res => res.json())
           .then((context) => {
+              console.log(context)
               this.setState({
                 hottests_posts: context.hottests_posts,
                 latest_posts: context.latest_posts,
@@ -39,11 +40,14 @@ class IndexView extends Component{
             // mających swoje źródło w komponencie.
             (error) => {
               this.setState({
-                error
+                error: error
               });
             }
-          )
-      }
+          );
+        console.log(this.state.latest_posts);
+        console.log(this.state.error);
+
+    }
 
     render () {
         return (

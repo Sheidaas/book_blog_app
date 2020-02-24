@@ -46,7 +46,7 @@ class PostSearchEngine:
         """
             Returns Q objects in array
         """
-        return [Q(**{'tags__name__in': keyword}) for keyword in tags_keywords]
+        return [Q(**{'tags__name__in': tags_keywords})]
 
     @staticmethod
     def get_from_date_query(from_date):
@@ -64,12 +64,14 @@ class PostSearchEngine:
 
     def get_filter_options(self, _filter):
         """
-            Returns flags and argument list
+            Returns
+                flags: dict
+                argument list: list of Q
         """
         actions = {
             'commited': self.get_commited_query,
             'title_keywords': self.get_title_keywords_query,
-            'authors': self.get_authors_keywords_query,
+            'authors_keywords': self.get_authors_keywords_query,
             'tags': self.get_tags_keywords_query,
             'from_date': self.get_from_date_query,
             'to_date': self.get_to_date_query,
@@ -103,13 +105,13 @@ class PostSearchEngine:
             'oldest': 'published_date'
         }
         flags, argument_list = self.get_filter_options(_filter)
-
+        print(argument_list)
         if not argument_list:
             return Post.objects.none()
 
         for key in flags:
             if flags[key]:
-                return Post.objects.filter(reduce(and_, argument_list)).order_by(flags_actions[key])[:max_posts]
+                return Post.objects.filter(reduce(and_, argument_list)).order_by(flags_actions[key]).distinct()[:max_posts]
 
         if argument_list:
-            return Post.objects.filter(reduce(and_, argument_list))[:max_posts]
+            return Post.objects.filter(reduce(and_, argument_list)).distinct()[:max_posts]

@@ -14,15 +14,18 @@ class PostSearch(forms.Form):
     authors_keywords = forms.CharField(required=False)
     from_date = forms.CharField(validators=[validate_date, ], required=False)
     to_date = forms.CharField(validators=[validate_date, ], required=False)
-    tags = TagField(required=False)
+    tags = forms.CharField(required=False)
     sort_method = forms.CharField(required=False)
     commited = forms.BooleanField()
 
     def create_filter(self):
         """
 
-            Create filter dict for post search engine,
+            Create _filter dict for post search engine,
             use only if form is valid
+
+            If _filter[key] exists, but is empty
+            PostSearchEngine() will raise exception
 
             Returns: _filter
 
@@ -30,6 +33,7 @@ class PostSearch(forms.Form):
         _filter = {}
         actions = {
             'title_keywords': self._clean_data_for_filter,
+            'tags': self._clean_data_for_filter,
             'authors_keywords': self._clean_data_for_filter,
             'from_date': self._clean_date_for_filter,
             'to_date': self._clean_date_for_filter,
@@ -37,10 +41,9 @@ class PostSearch(forms.Form):
             # This means don't use a method but
             # assign variable to _filter[key]
             'commited': False,
-            'tags': False,
         }
         for key in self.cleaned_data:
-            if key in actions.keys():
+            if key in actions.keys() and self.cleaned_data[key]:
                 if actions[key]:
                     _filter[key] = actions[key](self.cleaned_data[key])
                 else:
@@ -50,13 +53,16 @@ class PostSearch(forms.Form):
 
     @staticmethod
     def _clean_data_for_filter(value: str):
+        print(value)
         return [string.strip(' ') for string in value.split(',')]
 
     @staticmethod
     def _clean_date_for_filter(value: str):
-        splitted_date = value.split('.')
-        elements_length = [len(element) for element in splitted_date]
-        if elements_length == [4, 2, 2]:
-            return str(splitted_date[0] + '-' + splitted_date[1] + '-' + splitted_date[2])
-        else:
-            return str(splitted_date[2] + '-' + splitted_date[1] + '-' + splitted_date[0])
+        if value:
+            splitted_date = value.split('.')
+            elements_length = [len(element) for element in splitted_date]
+            if elements_length == [4, 2, 2]:
+                return str(splitted_date[0] + '-' + splitted_date[1] + '-' + splitted_date[2])
+            else:
+                return str(splitted_date[2] + '-' + splitted_date[1] + '-' + splitted_date[0])
+        return ''

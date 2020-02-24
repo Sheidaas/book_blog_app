@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import axios from 'axios'
-import { withRouter } from 'react-router-dom'
-import { Grid, Typography, Button } from '@material-ui/core'
+import withRouter from 'react-router-dom/withRouter'
+import {Button, Grid, Typography} from '@material-ui/core'
 import Header from '../components/header/header'
 import Footer from '../components/footer/footer'
 import DialogFormFilter from './components/dialog_form_filter/dialog_form_filter'
@@ -11,7 +11,7 @@ import './searcher.sass'
 class SearcherView extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             isDialogFormOpen: false,
             search_result: [],
@@ -24,54 +24,53 @@ class SearcherView extends Component {
             }
         }
     }
-    componentWillMount () {
+
+    componentWillMount() {
         this.getPostSearchResult(this.state.filter)
     }
 
     updateFilter = (dialog_filter) => {
         this.setState({filter: dialog_filter})
-    }
+    };
 
     recoverFilter = () => {
         return this.state.filter
-    }
+    };
 
     onToggleDialogForm = () => {
         this.setState({
             isDialogFormOpen: !this.state.isDialogFormOpen,
         })
-    }
+    };
 
     getPostSearchResult = (dialog_filter) => {
-        var tag_array = Array.from(dialog_filter.tags)
-        dialog_filter.tags = tag_array
-        axios.post('http://127.0.0.1:8000/get_posts/', JSON.stringify(dialog_filter)).
-        then( ( response ) => {
-            this.setState({search_result: response.data})
-        })
-    }
+        console.log(dialog_filter.tags)
+        axios.post('http://127.0.0.1:8000/get_posts/', JSON.stringify(dialog_filter)).then(
+            (response) => { this.setState({search_result: response.data})
+            })
+    };
 
-    render () {
+    render() {
         return (
             <>
-            <Header />
-            <Grid container id="searcher-div" justify="center">
-                <Grid items xs={12} id="filter">
-                    <Typography variant="h2"> Wynik obecnego wyszukiwania </Typography>
-                    <Button variant="outlined" onClick={() => this.onToggleDialogForm()}> Zmień filter </Button>
-                    <DialogFormFilter 
-                    updateFilter={this.updateFilter}
-                    recoverFilter={this.recoverFilter}
-                    isOpen={this.state.isDialogFormOpen} 
-                    onClose={this.onToggleDialogForm}
-                    getPostSearchResult={this.getPostSearchResult}
-                    />
+                <Header/>
+                <Grid container id="searcher-div" justify="center">
+                    <Grid items xs={12} id="filter">
+                        <Typography variant="h2"> Wynik obecnego wyszukiwania </Typography>
+                        <Button variant="outlined" onClick={() => this.onToggleDialogForm()}> Zmień filter </Button>
+                        <DialogFormFilter
+                            updateFilter={this.updateFilter}
+                            recoverFilter={this.recoverFilter}
+                            isOpen={this.state.isDialogFormOpen}
+                            onClose={this.onToggleDialogForm}
+                            getPostSearchResult={this.getPostSearchResult}
+                        />
+                    </Grid>
+                    <Grid item xs={10} id="filter-results">
+                        <SearchResults search_result={this.state.search_result}/>
+                    </Grid>
                 </Grid>
-                <Grid item xs={10} id="filter-results">
-                    <SearchResults search_result={this.state.search_result} />
-                </Grid>
-            </Grid>
-            <Footer />
+                <Footer/>
 
             </>
         );

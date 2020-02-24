@@ -15,8 +15,7 @@ class GetPosts(APIView):
     """
 
     def post(self, request, *args, **kwargs):
-        dict_data = json.loads(request.body)
-        dict_data['commited'] = True
+        dict_data = self.prepare_data_to_form(request.body)
         form = PostSearch(data=dict_data)
         if form.is_valid():
             posts = PostSearchEngine().get_filtered_posts(form.create_filter())
@@ -24,3 +23,27 @@ class GetPosts(APIView):
             return Response(data=serialized_posts.data)
         print('not valid buddy')
         return Response()
+
+    def prepare_data_to_form(self, raw_data):
+        """
+
+        Args:
+            raw_data: request.body
+
+        Returns:
+            dict_data: dict
+
+        """
+        dict_data = json.loads(raw_data)
+        dict_data['commited'] = True
+
+        # Django Taggit TagField need a string
+        # dict_data['tags'] have list of string
+        tag_string = ''
+        for index in range(len(dict_data['tags'])):
+            if index == len(dict_data['tags'])-1:
+                tag_string += dict_data['tags'][index]
+            else:
+                tag_string += dict_data['tags'][index] + ','
+        dict_data['tags'] = tag_string
+        return dict_data
