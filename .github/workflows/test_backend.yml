@@ -15,9 +15,6 @@ jobs:
         - name: fetch project
           if: success()
           uses: actions/checkout@v2
-        - name: Python Style Checker
-          if: success()
-          uses: andymckay/pycodestyle-action@0.1.3
         - name: Install requirements
           if: always()
           run: pip install -r requirements.txt
