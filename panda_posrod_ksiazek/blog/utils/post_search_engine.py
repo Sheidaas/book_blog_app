@@ -105,7 +105,6 @@ class PostSearchEngine:
             'oldest': 'published_date'
         }
         flags, argument_list = self.get_filter_options(_filter)
-        print(argument_list)
         if not argument_list:
             return Post.objects.none()
 
