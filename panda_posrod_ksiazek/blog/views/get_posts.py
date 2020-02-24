@@ -10,6 +10,10 @@ from blog.utils.post_search_engine import PostSearchEngine
 
 class GetPosts(APIView):
 
+    """
+        GetPosts is a view to get posts with a filter
+    """
+
     def post(self, request, *args, **kwargs):
         dict_data = json.loads(request.body)
         dict_data['commited'] = True

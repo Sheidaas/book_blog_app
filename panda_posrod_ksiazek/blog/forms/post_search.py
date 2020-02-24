@@ -4,8 +4,12 @@ from taggit.forms import TagField
 from .validators.date_validator import validate_date
 
 
-# TODO: from_date oraz to_date mają mieć widget tempus dominus bootstrap 4
 class PostSearch(forms.Form):
+    """
+
+        Form using to validate incoming data from frontend to search posts
+
+    """
     title_keywords = forms.CharField(required=False)
     authors_keywords = forms.CharField(required=False)
     from_date = forms.CharField(validators=[validate_date, ], required=False)
@@ -15,30 +19,32 @@ class PostSearch(forms.Form):
     commited = forms.BooleanField()
 
     def create_filter(self):
+        """
+
+            Create filter dict for post search engine,
+            use only if form is valid
+
+            Returns: _filter
+
+        """
         _filter = {}
-        if self.cleaned_data['title_keywords']:
-            _filter['title_keywords'] = self._clean_data_for_filter(self.cleaned_data['title_keywords'])
+        actions = {
+            'title_keywords': self._clean_data_for_filter,
+            'authors_keywords': self._clean_data_for_filter,
+            'from_date': self._clean_date_for_filter,
+            'to_date': self._clean_date_for_filter,
 
-        if self.cleaned_data['authors_keywords']:
-            _filter['authors_keywords'] = self._clean_data_for_filter(self.cleaned_data['authors_keywords'])
-
-        if self.cleaned_data['tags']:
-            _filter['tags'] = self.cleaned_data['tags']
-
-        if self.cleaned_data['from_date']:
-            _filter['from_date'] = self._clean_date_for_filter(self.cleaned_data['from_date'])
-
-        if self.cleaned_data['to_date']:
-            _filter['to_date'] = self._clean_date_for_filter(self.cleaned_data['to_date'])
-
-        if self.cleaned_data['commited']:
-            _filter['commited'] = self.cleaned_data['commited']
-
-        if self.cleaned_data['sort_method']:
-            if self.cleaned_data['sort_method'] == 'latest':
-                _filter['latest'] = self.cleaned_data['sort_method']
-            elif self.cleaned_data['sort_method'] == 'oldest':
-                _filter['oldest'] = self.cleaned_data['sort_method']
+            # This means don't use a method but
+            # assign variable to _filter[key]
+            'commited': False,
+            'tags': False,
+        }
+        for key in self.cleaned_data:
+            if key in actions.keys():
+                if actions[key]:
+                    _filter[key] = actions[key](self.cleaned_data[key])
+                else:
+                    _filter[key] = self.cleaned_data[key]
 
         return _filter
 

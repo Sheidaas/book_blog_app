@@ -1,10 +1,19 @@
+"""
+
+    Tests for blog.forms.post_search.PostSearch()
+
+"""
 from django import test
 
 from blog.forms.post_search import PostSearch
 
 
 class TestPostSearch(test.TestCase):
+    """
 
+        Test case for PostSearch form
+
+    """
     def test_post_search_form(self):
         data = {
             'title_keywords': '',
