@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import footer from './footer.sass'
-import { Grid, Typography, Paper } from '@material-ui/core'
+import './footer.sass'
+import { Grid } from '@material-ui/core'
 
 class Footer extends Component{
     render () {

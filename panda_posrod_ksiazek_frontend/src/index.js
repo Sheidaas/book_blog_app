@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import Header from './views/components/header/header'
-import {BrowserRouter, Route, Link, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import IndexView from './views/index/index'
 import LoginView from './views/login/login'
 import SearcherView from './views/searcher/searcher'
@@ -15,7 +14,7 @@ import CreatePost from './views/create_post/create_post'
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.register();
 
-const elementRouters = document.getElementById('routers')
+const elementRouters = document.getElementById('routers');
 const routers = (
     <BrowserRouter>
     <Switch>
@@ -27,5 +26,5 @@ const routers = (
         <Route path="/articles/:slug" component={PostDetailView} />
     </Switch>
     </BrowserRouter>
-)
-ReactDOM.render(routers, elementRouters)
+);
+ReactDOM.render(routers, elementRouters);

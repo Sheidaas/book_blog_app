@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import latest_posts from './latest_posts.sass'
+import './InLatestPosts.sass'
 import { Typography, Grid, Container, Button } from '@material-ui/core'
 import PostCard from '../../../components/post_card/post_card'
 

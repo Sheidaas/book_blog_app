@@ -6,12 +6,11 @@ const new_styles = {
     notchedOutline: {
         borderColor: 'white !important'
     }
-}
+};
 
 class MenuForm extends Component {
 
     render () {
-        const {classes} = this.props
         return (
             <>
                 <form method="post" noValidate autoComplete="on">

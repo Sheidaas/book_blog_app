@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import logoImage from './img/panda_camilla.png'
-import { AppBar, Toolbar, IconButton, Typography, Grid, Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, Link, Box } from '@material-ui/core'
+import { AppBar, Toolbar, IconButton, Typography, Grid, Drawer, List, ListItem, ListItemText, Divider, Link, Box } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import InstagramIcon from '@material-ui/icons/Instagram';
-import styles from './header.sass'
+import './header.sass'
 import { Container } from 'reactstrap'
 import MenuForm from './components/menu_form'
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Container, Row, Col } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom'
 
 class LoginView extends Component{
