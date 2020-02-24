@@ -5,12 +5,18 @@ jobs:
     name: Check code with SonarCloud
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
-      with:
-        projectKey: Sheidaas_book_blog_app
-        hostUrl: https://sonarcloud.io/dashboard?id=Sheidaas_book_blog_app
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: fetch project
+        if: success()
+        uses: actions/checkout@v2
+      - name: Install requirements
+        if: always()
+        run: pip install -r requirements.txt
+      - uses: actions/checkout@master
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          projectKey: Sheidaas_book_blog_app
+          hostUrl: https://sonarcloud.io/dashboard?id=Sheidaas_book_blog_app
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
