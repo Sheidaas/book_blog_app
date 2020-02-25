@@ -19,6 +19,7 @@ class PostCard extends Component {
         const tag_chips = this.props.tags.map( (tag) => (
             <Chip key={tag} variant={"outlined"} label={tag} size={"small"}/>
         ));
+        console.log(hero_image);
         return (
             <>
                 <Card className="post-card" variant={"outlined"}>

@@ -23,7 +23,6 @@ class TestGetPosts(TestCase):
                             card_image='file_path')
 
     def test_post(self) -> None:
-
         """
             Check is post status code is 200
             Check is response data correct
