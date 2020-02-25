@@ -16,12 +16,10 @@ class Header extends Component{
         this.state = {
             menuIcon: false
         };
-
-        this.onMenuIconClicked = this.onMenuIconClicked.bind(this)
     }
 
 
-    onMenuIconClicked () { 
+    onMenuIconClicked = () => {
         this.setState({
             menuIcon: !this.state.menuIcon,
         })
@@ -47,7 +45,7 @@ class Header extends Component{
                                     onClick={this.onMenuIconClicked} size="medium">
                                     <MenuIcon />
                                 </IconButton>  
-                                <Typography variant="body"> Panda Pośród Ksiązek </Typography>
+                                <Typography variant="body"> Panda Pośród Książek </Typography>
 
                             </Grid>
                         <Grid xs={6} container direction="row" justify="center">
@@ -80,7 +78,7 @@ class MenuDrawer extends Component {
                 <Drawer open={this.props.is_open} onClose={this.props.onClick} PaperProps={{ className: 'paper-drawer' }}>
                 <Container id="drawer">
                 <Box component="h3" className="list-header">
-                Panda Pośród Ksiązek
+                Panda Pośród Książek
                 </Box>
                     <List component="nav" aria-label="main link-list">
                         <ListItem>
@@ -103,13 +101,13 @@ class MenuDrawer extends Component {
                             <ListItemText primary="Kategorie" className="list-header"/>
                         </ListItem>
                         <ListItem button className="listItem">
-                            <ListItemText primary="Początek" />
+                            <ListItemText primary="Książki" className="list-link-text"/>
                         </ListItem>
                         <ListItem button className="listItem">
-                            <ListItemText primary="Początek" />
+                            <ListItemText primary="Podróże" className="list-link-text"/>
                         </ListItem>
                         <ListItem button className="listItem">
-                            <ListItemText primary="Początek" />
+                            <ListItemText primary="Osobiste" className="list-link-text"/>
                         </ListItem>
                     </List>
 
@@ -123,20 +121,36 @@ class MenuDrawer extends Component {
     }
 
     render_menu_for_user () {
-        if(this.props.is_user_authenticated){
+        if(this.props.is_user_authenticated) {
             return (
                 <>
-                <Divider />
-                <List component="nav" aria-label="main link-list">
-                    <ListItem button className="listItem">
-                        <ListItemText primary="Narzędzia" />
-                    </ListItem>
-                    <ListItem button className="listItem">
-                        <ListItemText primary="Wyloguj się" />
-                    </ListItem>
-                </List>
+                    <Divider/>
+                    <Box component="h3" className="list-header">
+                        Narzędzia
+                    </Box>
+                    <List component="nav" aria-label="main link-list">
+                        <ListItem button className="listItem">
+                            <ListItemText primary="Narzędzia" className="list-link-text"/>
+                        </ListItem>
+                        <ListItem button className="listItem">
+                            <ListItemText primary="Wyloguj się" className="list-link-text"/>
+                        </ListItem>
+                    </List>
                 </>
-            )
+            );
+        } else {
+            return (
+                <>
+                    <Divider/>
+                    <List component="nav">
+                        <Link href="/login/" className="list-link-link">
+                            <ListItem className="listItem">
+                                <ListItemText primary="Zaloguj się" className="list-link-text"/>
+                            </ListItem>
+                        </Link>
+                    </List>
+                </>
+            );
         }
     }
 }

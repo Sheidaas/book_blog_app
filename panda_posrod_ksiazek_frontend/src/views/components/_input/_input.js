@@ -13,7 +13,7 @@ const new_styles = {
 class _Input extends Component {
 
     render () {
-        const { classes } = this.props
+        const { classes } = this.props;
         return (
             <>
                 <TextField

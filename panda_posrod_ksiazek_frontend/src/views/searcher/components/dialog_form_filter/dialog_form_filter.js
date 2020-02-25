@@ -62,7 +62,6 @@ class DialogFormFilter extends Component {
             from_date: this.state.filter.from_date,
             to_date: this.state.filter.to_date,
         }});
-        console.log(this.state.filter)
     };
 
     getFactorySettings = () => {
