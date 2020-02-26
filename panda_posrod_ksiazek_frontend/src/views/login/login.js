@@ -23,7 +23,7 @@ class LoginView extends Component {
     onLoginButtonClick = () => {
         axios.post('', JSON.stringify(this.state.login_form)).then( (response) => {
             if (response) {
-
+                console.log(response.data)
             }
         })
     };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import InCarousel from './components/InCarousel/InCarousel'
-import InLatestPosts from './components/InLatestPosts/InLatestPosts'
+import InCarousel from './InCarousel/InCarousel'
+import InLatestPosts from './InLatestPosts/InLatestPosts'
 import { Grid } from '@material-ui/core'
 import './index.sass'
 import {withRouter} from 'react-router-dom'

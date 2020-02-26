@@ -101,6 +101,7 @@ class DialogFormFilter extends Component {
                     </Grid>
 
                     <Grid item xs={12} className="input-block">
+                        #TODO: Change radio to select
                         <_RADIO 
                             sort_method={this.state.filter.sort_method}
                             onChange={this.onChangeSortMethod}

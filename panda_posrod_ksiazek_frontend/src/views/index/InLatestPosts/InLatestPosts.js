@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './InLatestPosts.sass'
 import { Typography, Grid, Container, Button } from '@material-ui/core'
-import PostCard from '../../../components/PostCard/PostCard'
+import PostCard from '../InLatestPosts/InLatestPosts.js'
 
 class InLatestPosts extends Component{
 

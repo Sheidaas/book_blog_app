@@ -8,7 +8,7 @@ const new_styles = {
     notchedOutline: {
         borderColor: 'white !important'
     }
-}
+};
 
 class _Input extends Component {
 
