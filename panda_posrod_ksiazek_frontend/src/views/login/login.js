@@ -10,6 +10,7 @@ import _Input from "../components/_input/_input";
 import './login.sass'
 
 class LoginView extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -22,13 +23,13 @@ class LoginView extends Component {
 
     onLoginButtonClick = () => {
         axios.post('', JSON.stringify(this.state.login_form)).then( (response) => {
-            if (response) {
+            if (response.data) {
                 console.log(response.data)
             }
         })
     };
 
-    render() {
+    render = () => {
         return (
             <>
                 <Header is_user_authenticated={false}/>

@@ -25,7 +25,7 @@ class SearcherView extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.getPostSearchResult(this.state.filter)
     }
 
@@ -44,7 +44,6 @@ class SearcherView extends Component {
     };
 
     getPostSearchResult = (dialog_filter) => {
-        console.log(dialog_filter.tags)
         axios.post('http://127.0.0.1:8000/get_posts/', JSON.stringify(dialog_filter)).then(
             (response) => { this.setState({search_result: response.data})
             })
@@ -56,7 +55,7 @@ class SearcherView extends Component {
                 <Header/>
                 <Grid container id="searcher-div" justify="center">
                     <Grid items xs={12} id="filter">
-                        <Typography variant="h2"> Wynik obecnego wyszukiwania </Typography>
+                        <Typography variant="h4" id={"header"}> Wynik obecnego wyszukiwania </Typography>
                         <Button variant="outlined" onClick={() => this.onToggleDialogForm()}> Zmień filter </Button>
                         <DialogFormFilter
                             updateFilter={this.updateFilter}

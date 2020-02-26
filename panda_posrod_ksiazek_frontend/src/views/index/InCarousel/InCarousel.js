@@ -6,7 +6,6 @@ import './carousel.sass'
 
 class InCarousel extends Component{
     render () {
-
         const posts = this.props.hottests_posts.map((post) =>
             <Carousel.Item key={post.id}>
                 <Link to={'articles/' + post.slug}>

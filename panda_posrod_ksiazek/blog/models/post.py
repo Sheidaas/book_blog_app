@@ -1,3 +1,6 @@
+"""
+    Post model
+"""
 from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
@@ -5,6 +8,9 @@ from taggit.managers import TaggableManager
 
 
 class Post(models.Model):
+    """
+        Post model
+    """
     card_image = models.ImageField(upload_to='hero_images/', blank=True)
     card_image_alt = models.CharField(max_length=20, blank=True)
     card_description = models.CharField(max_length=300, blank=True)
@@ -17,8 +23,8 @@ class Post(models.Model):
     commited = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
+        """
+            Calling this method when we are saving model instance
+        """
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-
-    def get_tags_display(self):
-        return self.tags.values_list('name', flat=True)

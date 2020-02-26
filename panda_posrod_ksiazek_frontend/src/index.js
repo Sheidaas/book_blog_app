@@ -18,7 +18,7 @@ const elementRouters = document.getElementById('routers');
 const routers = (
     <BrowserRouter>
     <Switch>
-        <Route path='/' exact component={IndexView} />
+        <Route exact path='/' component={IndexView} />
         <Route path='/login' component={LoginView} />
         <Route path='/searcher' component={SearcherView} />
         <Route path='/admin/blog/post/create' component={CreatePost} />
