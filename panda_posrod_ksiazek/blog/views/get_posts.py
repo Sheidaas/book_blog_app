@@ -15,14 +15,25 @@ class GetPosts(APIView):
     """
 
     def post(self, request, *args, **kwargs):
+
+        """
+            Called when request method is POST
+        Args:
+            request: Request
+            *args:
+            **kwargs:
+
+        Returns:
+            Response
+
+        """
         dict_data = self.prepare_data_to_form(request.body)
         form = PostSearch(data=dict_data)
         if form.is_valid():
             posts = PostSearchEngine().get_filtered_posts(form.create_filter())
             serialized_posts = PostSerializer(posts, many=True)
             return Response(data=serialized_posts.data)
-        print('not valid buddy')
-        return Response()
+        return Response(data='form is invalid')
 
     def prepare_data_to_form(self, raw_data):
         """

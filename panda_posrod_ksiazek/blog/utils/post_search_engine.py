@@ -49,6 +49,13 @@ class PostSearchEngine:
         return [Q(**{'tags__name__in': tags_keywords})]
 
     @staticmethod
+    def get_slug_keywords_query(slug_keywords):
+        """
+            Returns Q objects in array
+        """
+        return [Q(**{'slug__icontains': slug_keywords})]
+
+    @staticmethod
     def get_from_date_query(from_date):
         """
             Returns Q object in array
@@ -69,6 +76,7 @@ class PostSearchEngine:
                 argument list: list of Q
         """
         actions = {
+            'slug': self.get_slug_keywords_query,
             'commited': self.get_commited_query,
             'title_keywords': self.get_title_keywords_query,
             'authors_keywords': self.get_authors_keywords_query,
@@ -80,7 +88,7 @@ class PostSearchEngine:
             'latest': False,
             'oldest': False,
         }
-        argument_list = []
+        argument_list = []  # List with query
 
         if _filter:
             for key in _filter:
@@ -110,7 +118,8 @@ class PostSearchEngine:
 
         for key in flags:
             if flags[key]:
-                return Post.objects.filter(reduce(and_, argument_list)).order_by(flags_actions[key]).distinct()[:max_posts]
+                return Post.objects.filter(
+                    reduce(and_, argument_list)).order_by(flags_actions[key]).distinct()[:max_posts]
 
         if argument_list:
             return Post.objects.filter(reduce(and_, argument_list)).distinct()[:max_posts]

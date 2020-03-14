@@ -11,7 +11,7 @@ class TestPostSearchEngine(test.TestCase):
         post = Post()
         post.title = 'title'
         post.content = 'content'
-        post.slug = 'the_slug'
+        post.commited = True
         post.published_date = '2000-01-01'
         post.save()
 
@@ -25,6 +25,11 @@ class TestPostSearchEngine(test.TestCase):
         title_keywords = ['Hobbit', 'czyli']
         valid_argument_list = [Q(**{'title__icontains': 'Hobbit'}), Q(**{'title__icontains': 'czyli'})]
         self.assertEqual(PostSearchEngine.get_title_keywords_query(title_keywords), valid_argument_list)
+
+    def test_get_slug_keywords_query(self):
+        slug = 'this-is-new-slug'
+        valid_query = [Q(**{'slug__icontains': slug})]
+        self.assertEqual(valid_query, PostSearchEngine().get_slug_keywords_query(slug))
 
     def test_get_authors_keywords_query(self):
         valid_query = [Q(**{'author__first_name__icontains': 'Maciej'}),
@@ -58,8 +63,8 @@ class TestPostSearchEngine(test.TestCase):
 
     def test_get_filtered_models_query(self):
         _filter = {
-            'title_keywords': 'title',
-            'from_date': '1999-01-01'
+            'commited': True,
+            'slug': 'title'
         }
         valid_post = Post.objects.get(pk=1)
         self.assertEqual(valid_post, PostSearchEngine().get_filtered_posts(_filter)[0])

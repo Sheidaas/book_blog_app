@@ -11,6 +11,7 @@ class PostSearch(forms.Form):
 
     """
     title_keywords = forms.CharField(required=False)
+    slug_keywords = forms.CharField(required=False)
     authors_keywords = forms.CharField(required=False)
     from_date = forms.CharField(validators=[validate_date, ], required=False)
     to_date = forms.CharField(validators=[validate_date, ], required=False)

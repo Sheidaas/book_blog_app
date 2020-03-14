@@ -9,20 +9,36 @@ const new_styles = {
 };
 
 class MenuForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title_keywords: '',
+        }
+    };
+
+    onTitleKeywordsChange = (event) => {
+        this.setState({title_keywords: event.target.value})
+    };
+
+    onSubmit = (event) => {
+
+    };
 
     render () {
         return (
             <>
-                <form method="post" noValidate autoComplete="on">
+                <form action={ (event) => this.onSubmit(event)}>
                     <_Input 
-                        name="title_keywords" 
-                        placeholder="Tytuł"
+                        name="title_keywords"
                         label="Szukaj artykułu"
+                        value={this.state.title_keywords}
+                        onChange={this.onTitleKeywordsChange}
                         />
                 </form>
             </>
         )
-    }
+    };
+
 }
 
 export default withStyles(new_styles)(MenuForm)
