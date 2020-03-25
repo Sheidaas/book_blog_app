@@ -11,7 +11,7 @@ class PostSearch(forms.Form):
 
     """
     title_keywords = forms.CharField(required=False)
-    slug_keywords = forms.CharField(required=False)
+    slug = forms.CharField(required=False)
     authors_keywords = forms.CharField(required=False)
     from_date = forms.CharField(validators=[validate_date, ], required=False)
     to_date = forms.CharField(validators=[validate_date, ], required=False)
@@ -42,6 +42,7 @@ class PostSearch(forms.Form):
             # This means don't use a method but
             # assign variable to _filter[key]
             'commited': False,
+            'slug': False,
         }
         for key in self.cleaned_data:
             if key in actions.keys() and self.cleaned_data[key]:

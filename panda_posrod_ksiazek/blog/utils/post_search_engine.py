@@ -53,7 +53,7 @@ class PostSearchEngine:
         """
             Returns Q objects in array
         """
-        return [Q(**{'slug__icontains': slug_keywords})]
+        return [Q(**{'slug__iexact': slug_keywords})]
 
     @staticmethod
     def get_from_date_query(from_date):

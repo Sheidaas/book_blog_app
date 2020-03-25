@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import withRouter from 'react-router-dom/withRouter'
+import { withRouter } from 'react-router-dom'
 import {Button, Grid, Typography} from '@material-ui/core'
 import Header from '../components/header/header'
 import Footer from '../components/footer/footer'

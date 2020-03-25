@@ -14,15 +14,12 @@ class GetPosts(APIView):
         GetPosts is a view to get posts with a filter
     """
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
 
         """
             Called when request method is POST
         Args:
             request: Request
-            *args:
-            **kwargs:
-
         Returns:
             Response
 
