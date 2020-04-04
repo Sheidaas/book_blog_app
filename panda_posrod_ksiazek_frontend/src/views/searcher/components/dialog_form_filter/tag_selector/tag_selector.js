@@ -16,7 +16,6 @@ class TagSelector extends Component {
     componentWillMount () {
         axios.get('http://127.0.0.1:8000/get_tags/').then(
             (response) => {
-                console.log(response.data);
                 this.setState({tag_chips: response.data})
             })}
 

@@ -16,7 +16,7 @@ class Post(models.Model):
     card_description = models.CharField(max_length=300, blank=True)
     author = models.ManyToManyField(User)
     title = models.CharField(max_length=40, blank=False)
-    published_date = models.DateTimeField(blank=False)
+    published_date = models.DateTimeField(blank=True)
     content = models.TextField()
     slug = models.SlugField(unique=True)
     tags = TaggableManager()

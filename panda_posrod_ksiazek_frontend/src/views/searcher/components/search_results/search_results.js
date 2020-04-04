@@ -8,7 +8,14 @@ class SearchResults extends Component {
         const posts = this.props.search_result.map( (post) => (
             <>
                 <Grid item xs={10} md={4}>
-                    <PostCard key={post.id} alt="alt" tags={post.tags} hero_image={post.hero_image} slug={post.slug} title={post.title} content={post.content} published_date={post.published_date}/>
+                    <PostCard key={post.id}
+                              alt="alt"
+                              tags={post.tags}
+                              hero_image={post.hero_image}
+                              slug={post.slug}
+                              title={post.title}
+                              content={post.card_description}
+                              published_date={post.published_date}/>
                 </Grid>
             
             </>

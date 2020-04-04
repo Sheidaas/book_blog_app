@@ -26,6 +26,8 @@ class PostSerializer(serializers.ModelSerializer):
         return {
             'id': instance.id,
             'title': str(instance.title),
+            'image_alt': instance.card_image_alt,
+            'card_description': instance.card_description,
             'published_date': str(instance.published_date),
             'content': str(instance.content),
             'commited': instance.commited,

@@ -49,13 +49,14 @@ class Header extends Component{
 
                             </Grid>
                         <Grid xs={6} container direction="row" justify="center">
-
-                            <IconButton
-                                color="inherit"
-                                aria-label="instagram"
-                                size="medium">
-                                <InstagramIcon className="iconButtons"/>
-                            </IconButton>
+                            <a href={'https://www.instagram.com/pandacamilla/?igshid=19sw4dgve8zn1'}>
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="instagram"
+                                    size="medium">
+                                    <InstagramIcon className="iconButtons"/>
+                                </IconButton>
+                            </a>
                             <MenuForm />
 
                         </Grid>

@@ -22,9 +22,16 @@ class LoginView extends Component {
     }
 
     onLoginButtonClick = () => {
-        axios.post('', JSON.stringify(this.state.login_form)).then( (response) => {
+        let form = new FormData();
+        form.append('username', this.state.login_form.username);
+        form.append('password', this.state.login_form.password);
+        axios.post('', form).then( (response) => {
             if (response.data) {
                 console.log(response.data)
+            }
+        }).catch( (error) => {
+            switch (error.) {
+
             }
         })
     };
